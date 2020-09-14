@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&family=Roboto&display=swap');
+
+h1
+{
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+h2
+{
+  color: #fff;
+}
+p
+{
+  font-family: 'Roboto', sans-serif;
+}
+.jumbotron
+{
+  background-color: #4ECDC4
+  /* medium turquoise */
+}
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 50%; */
+}
+.bg-steel {
+  background-color: #4ECDC4;
+}
+
+#formula
+{
+  text-align: center;
+}
+.footer
+{
+  background-color: #000000;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+}
+
+.nav__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav__link {
+  --spacing: 1em;
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  padding: calc(var(--spacing) / 2) var(--spacing);
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+}

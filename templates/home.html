@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Double Pendulum and the beginning of chaos</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&family=Roboto&display=swap" rel="stylesheet">     -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='basic.css') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="shortcut icon" type="image/png" href="/motion.png"> -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+          <div class="container">
+            <a class="navbar-brand mr-4" href="/">Physics Project</a>
+            <a class="nav__link" href="https://github.com/SanyaNanda"><i class="fa fa-github" style="font-size:36px;color:white"> </i></a>
+            <a class="nav__link" href="https://www.linkedin.com/in/sanya-nanda-aba12218b/"><i class="fa fa-linkedin-square" style="font-size:36px;color:white"></i></a>
+            <!-- <ul class="nav__list">
+              <li class="nav__list-item" ><a class="nav__link" href="https://github.com/SanyaNanda"><i class="fa fa-github" style="font-size:36px;color:white"> </i></a></li>
+              <li class="nav__list-item" ><a class="nav__link" href="https://www.linkedin.com/in/sanya-nanda-aba12218b/"><i class="fa fa-linkedin-square" style="font-size:36px;color:white"></i></a></li> -->
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+  </nav>
+
+
+    <div class="container" >
+    <div class="jumbotron">
+
+      <h1>The Double Pendulum</h1>
+      <h2>and it's motion</h2>
+      </div>
+    </div>
+
+    <div class="container">
+      <h3>Kinematics of double Pendulum</h3>
+      <br>
+      <h6>Conventions</h6>
+ <ul><li>The origin is at the pivot point of the upper pendulum</li> <li>y increases in upward direction</li><li> The upper pendulum is subscripted 1, and the lower is subscripted 2</li><li>The two pendulum masses as point particles</li></ul>
+<br>
+<h6>Let</h6>
+ <p id='t'>x = horizontal position of pendulum mass <br>y = vertical position of pendulum mass<br>θ = angle of pendulum (counter-clockwise is positive)
+ <br>L = length of rod (constant) <br>M= mass of the bob (constant) </p>
+<img src="{{ url_for('static', filename='double_pendulum.png') }}" alt="The Double Pendulum" width="350" height="350" class='center' >
+<p>By applying Trigonometry to write expressions for the <b>positions</b> x1, y1, x2, y2 in terms of the angles θ1, θ2 .</p>
+<p id='formula'> <b>x1 = L1 sin θ1 <br>y1 = −L1 cos θ1 <br>x2 = x1 + L2 sin θ2 <br>y2 = y1 − L2 cos θ2</b></p>
+<p>The <b>velocity</b> is the derivative with respect to time of the position.</p>
+<p id='formula'> <b>x1' = θ1' L1 cos θ1 <br>y1' = θ1' L1 sin θ1 <br>x2' = x1' + θ2' L2 cos θ2
+<br> y2' = y1' + θ2' L2 sin θ2</b></p>
+<p>The <b>acceleration</b> is the second derivative.</p>
+<p id='formula'> <b>x1'' = −θ1'2 L1 sin θ1 + θ1'' L1 cos θ1	<br>
+  	y1'' = θ1'2 L1 cos θ1 + θ1'' L1 sin θ1	<br>
+  	x2'' = x1'' − θ2'2 L2 sin θ2 + θ2'' L2 cos θ2	<br>
+  	y2'' = y1'' + θ2'2 L2 cos θ2 + θ2'' L2 sin θ2</b></p>
+
+    <h3>Dynamics of Double Pendulum</h3>
+    <img src="{{ url_for('static', filename='force.png') }}" alt="The Force" width="350" height="350" class='center' >
+    <h6>Let</h6>
+    <p>T = tension in the rod <br>m = mass of pendulum <br>g = gravitational constant</p>
+    <p>In case of the upper pendulum, We reslove the forces in x and y direction.The net force on the mass is the sum of the forces in horizontal and vertical direction. Here we show the net force and use Newton's law F = m a .</p>
+    <p id='formula'> <b>m1 x1'' = −T1 sin θ1 + T2 sin θ2 <br>
+  	m1 y1'' = T1 cos θ1 − T2 cos θ2 − m1 g</b></p>
+    <p>Likewise we apply the same concept on the lower pendulum and get the following result</p>
+    <p id='formula'><b> m2 x2'' = −T2 sin θ2	<br>
+  	m2 y2'' = T2 cos θ2 − m2 g</b></p>
+  <h3>Equation of Motion</h3>
+<p>We apply algebraic manipulations on the equation derived earlier to get θ1'', θ2'' in terms of θ1, θ1', θ2, θ2' . </p>
+<img src="{{ url_for('static', filename='f.png') }}" alt="The Double Pendulums" width="800" height="200" class='center' >
+<p>These are the equations of motion for the double pendulum. <br> <br>Solving this double derivative equation w.r.t time we can calculate the angles θ1 and θ2.By solving the equation of motion in a range of time, we will obtain a range of angles and and there by predict the motion of the double pendulum. In the next section we shall try doing this with help of computer simulations </p>
+
+
+
+<div class="container" >
+<div class="jumbotron">
+<h1>Computer Simulation</h1>
+  <h2>input the constants and intial conditions to see it swinging!</h2>
+  </div>
+  <p> Motion of the double pendulum is show for the first 20 secs</p>
+</div>
+<form action="http://localhost:5000" method="post">
+  <div class="center">
+  <div class="content-section">
+  <label for="mass1">Mass 1:</label>
+  <br>
+  <input type="float" name="mass1">
+  <br>
+  <label for="len1">Length 1:</label>
+  <br>
+  <input type="float" name="len1">
+  <br>
+  <label for="theta1">θ1:</label>
+  <br>
+  <input type="float" name="theta1">
+  <br>
+  <label for="mass2">Mass 2:</label>
+  <br>
+  <input type="float" name="mass2">
+  <br>
+  <label for="len2">Length 2:</label>
+  <br>
+  <input type="float" name="len2">
+  <br>
+  <label for="theta2">θ2:</label>
+  <br>
+  <input type="float" name="theta2">
+  <br>
+  <label for="grav">g:</label>
+  <br>
+  <input type="float" name="grav">
+  <br>
+  <input type="submit" formaction="/SeeitSwing!" name="SeeitSwing!" value = "See it Swing!">
+  <input type="submit" formaction="/GraphPlot"  name="GraphPlot" value = "Graph Plot">
+  <br>
+  </div>
+</div>
+</form>
+<!-- <img src={{ url1 }} alt="Chart" width="400px" height="350px">
+<img src={{ url2 }} alt="Chart" width="400px" height="350px"> -->
+
+    <div class="container" >
+    <div class="jumbotron">
+
+      <h1>The Butterfly Effect</h1>
+      <h2>and it's analogy to double pendulum</h2>
+      </div>
+    </div>
+    <div class="container">
+      <p>In chaos theory, the butterfly effect is the sensitive dependence on initial conditions in which a small change in one state of a deterministic nonlinear system can result in large differences in a later state.The butterfly effect is the idea that small things can have non-linear impacts on a complex system. The concept is imagined with a butterfly flapping its wings and causing a typhoon.Of course, a single act like the butterfly flapping its wings cannot cause a typhoon. Small events can, however, serve as catalysts that act on starting conditions</p>
+      <img src="{{ url_for('static', filename='b2.png') }}" alt="The butterfly effect" width="500" height="400" class='center' >
+      <br>
+      <p id="formula"> <em> Everything is connected with Everything Else</em> </p>
+    <p>Famous words of an Ecologist, <em> Barty Commoner</em> can be understood in all realms of study due to presense of valid theories and in case of Physics, <a href="https://plato.stanford.edu/entries/chaos/">The Chaos Theory</a>  explains it well. </p>
+    <p>A small experiment to portray the idea behind the Butterfly Effect is shown in the Animation. Three Double Pendulums are brought into motion with minor changes in their intial state of position.For a while we see the pendulums moving in a more or less synchronised manner, but soon enough they start deviating from the common path and follow completely different ones.Thereby adding meaning to the definition of the Butterfly Effect!</p>
+        <img src="{{ url_for('static', filename='double_pendulum1.gif') }}" alt="The Double Pendulums" width="400" height="400" class='center' >
+
+
+    </div>
+    <br><br>
+    <div class="container" >
+    <div class="jumbotron">
+
+      <h1>Youtube videos</h1>
+      <h2>to know more</h2>
+      </div>
+    </div>
+    <!-- <div class="col-md-3 col-lg-3 mt-lg-5 mb-4 mb-lg-0">
+                <div class="process rounded">
+                  <div>
+                    <span class="custom-icon-wrap">
+                      <img src="/static/Plethora-Technology.png">
+                    </span>
+                    <h3 class="text-white">Plethora of technology</h3>
+                    <p class="text-white">Due to our supply innovation, we are capable of handling wide range of technologies</p>
+                  </div>
+                </div>
+              </div>
+              <i class="fa fa-facebook-f"></i>
+              <div style="font-size: 2rem;">
+          <div><i class="fab fa-facebook-f fa-fw blue-text"></i> facebook</div>
+          <div><i class="fab fa-twitter fa-fw blue-text"></i> twitter</div>
+          <div><i class="fab fa-instagram fa-fw pink-text"></i> instagram</div>
+          <div><i class="fab fa-linkedin fa-fw blue-text"></i> linkedin</div>
+          <div><i class="fab fa-pinterest fa-fw red-text"></i> pinterest</div>
+        </div> -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <iframe width="500" height="300" src="https://www.youtube.com/embed/d0Z8wLLPNE0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+      </div>
+      <div class="col">
+        <iframe width="500" height="300" src="https://www.youtube.com/embed/fDek6cYijxI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+      </div>
+      </div>
+      <br>
+
+  <div class="row">
+    <div class="col">
+      <iframe width="500" height="300" src="https://www.youtube.com/embed/dDU2JsgLpm4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    </div>
+    <div class="col">
+      <iframe width="500" height="300" src="https://www.youtube.com/embed/mZ1hF_-cubA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    </div>
+
+  </div>
+  </div>
+  <!-- carousel -->
+
+  <!-- <div class="carousel-item">
+<img src="C:\Users\sanya\Desktop\sanya\f\backend\static\b2.png" alt="...">
+<div class="carousel-caption d-none d-md-block">
+  <h5>hello </h5>
+  <p>hi</p> -->
+</div>
+</div>
+</main>
+<hr>
+<!-- <footer>© Copyright 2020, Sanya Nanda. All rights reserved.</footer> -->
+<p id='formula'>© Copyright 2020, Sanya Nanda. All rights reserved.</p>
+
+  </body>
+</html>
