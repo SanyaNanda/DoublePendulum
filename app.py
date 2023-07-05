@@ -94,7 +94,7 @@ def predict():
         # ani.save(writer=writer)
 
         with open("templates/myvideo.html", "w") as f:
-            print(anim.to_html5_video(), file=f)
+            print(anim.to_html5_video())#, file=f)
 
         return render_template("myvideo.html" )
 
